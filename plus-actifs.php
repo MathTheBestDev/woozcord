@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require('config.php'); ?>
+<?php require('config.php');
+session_start (); ?>
 
 <head>
 

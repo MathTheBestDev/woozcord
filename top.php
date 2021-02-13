@@ -82,17 +82,32 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
+              <?php
+                // On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
+                
+                ini_set('display_errors', 'off');
+                // On récupère nos variables de session
+                if (isset($_SESSION['user']) && isset($_SESSION['mdp']) && isset($_SESSION['pdp'])) { ?>
+                
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-white small">InesDion</span>
-                <img class="img-profile rounded-circle" src="https://woozworld-fr-aws.woozworld.com/KidUser/profile_picture/49519109/1612458830851.png">
+                <span class="mr-2 d-none d-lg-inline text-white small"><?php echo $_SESSION['user'] ?></span>
+                <img class="img-profile rounded-circle" src="<?php echo $_SESSION['pdp'] ?>">
               </a>
+              <?php
+              }
+                else { ?>
+                  <a class="nav-link dropdown-toggle" href="login.php" id="userDropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-white small"><?php echo "Connecte toi !" ?></span>
+              </a>
+                <?php }
+                ?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="profil.php">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profil
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="settings.php">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Réglages
                 </a>
